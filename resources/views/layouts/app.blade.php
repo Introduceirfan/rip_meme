@@ -10,7 +10,6 @@
 <body class="bg-gray-950 text-white min-h-screen">
     <nav class="bg-gray-900 px-6 py-4 flex justify-between items-center">
         <a href="/memes" class="text-xl font-bold">RIP MEME!</a>
-        <a href="/memes/create" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded text-sm">+ Add Memes</a>
     </nav>
 
     <main class="container mx-auto px-6 py-8">
