@@ -11,10 +11,11 @@
             <input type="file" name="file" accept=".xlsx, .csv" class="text-sm text-gray-500">
             <button type="submit" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded text-sm font-bold transition">Import!</button>
         </form>
+        <a href="{{ route('memes.template') }}" class="bg-gray-500 hover:bg-gray-700 px-4 py-2 rounded text-sm font-semibold transition">Download template</a>
         </div>
     </div>
 
-    <div class="overflow-x-auto rounded-lg border border-gray-500">
+    <div class="overflow-x-auto border border-gray-500">
         <table class="w-full text-sm text-left">
             <thead class="bg-gray-900 text-gray-400 uppercase text-xs">
                 <tr>

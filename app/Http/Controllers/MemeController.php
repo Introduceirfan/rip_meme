@@ -121,4 +121,9 @@ class MemeController extends Controller
         Excel::import(new MemesImport, $request->file('file'));
         return redirect()->route('memes.index');
     }
+
+    public function template() 
+    {
+        return response()->download(public_path('templates/memes_template.xlsx'));
+    }
 }

@@ -8,12 +8,27 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-gray-950 text-white min-h-screen">
-    <nav class="bg-gray-900 px-6 py-4 flex justify-between items-center">
-        <a href="/memes" class="text-xl font-bold">RIP MEME!</a>
+    <nav class="bg-gray-900 px-6 py-4 flex justify-center items-center">
+        <a href="/memes" class="flex items-center gap-2 text-2xl font-bold">
+            <img src="{{ asset('image/image_bar.jpeg') }}" class="w-20 h-20">RIP MEME</a>
     </nav>
-
+    <div class="bg-gray-700 px-6 py-2 text-sm text-gray-300 text-center">
+        Dengan melihat list meme ini, kamu sudah membuang waktumu sebanyak 
+        <span id="timer" class="font-bold">00:00:00</span>
+    </div>
     <main class="container mx-auto px-6 py-8">
         @yield('content')
     </main>
+
+    <script>
+        let seconds = 0;
+        setInterval(() => {
+            seconds++;
+            const h = String(Math.floor(seconds / 3600)).padStart(2, '0');
+            const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+            const s = String(seconds % 60).padStart(2, '0');
+            document.getElementById('timer').textContent = `${h}:${m}:${s}`;
+        }, 1000);
+    </script>
 </body>
 </html>
