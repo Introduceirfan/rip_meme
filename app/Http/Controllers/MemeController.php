@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Meme;
 use Illuminate\Http\Request;
+use App\Exports\MemesExport;
+use App\Imports\MemesImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MemeController extends Controller
 {
@@ -105,6 +108,17 @@ class MemeController extends Controller
     {
         $meme = Meme::findOrFail($id);
         $meme ->delete();
+        return redirect()->route('memes.index');
+    }
+
+    public function export()
+    {
+        return Excel::download(new MemesExport, 'rip-memes.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        Excel::import(new MemesImport, $request->file('file'));
         return redirect()->route('memes.index');
     }
 }
