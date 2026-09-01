@@ -28,12 +28,13 @@
 
         <div>
             <label class="block text-sm text-gray-400 mb-1">Tahun Mati</label>
-            <input type="date" name="died_at" class="w-full bg-gray-700 border border-gray-400 rounded px-4 py-2 text-white">
+            <input type="date" id="died_at" name="died_at" class="w-full bg-gray-700 border border-gray-400 rounded px-4 py-2 text-white">
         </div>
         
         <div>
             <label class="block text-sm text-gray-400 mb-1">Mati gara-gara</label>
-            <input type="text" name="cause_of_death" class="w-full bg-gray-700 border border-gray-400 rounded px-4 py-2 text-white">
+            <input type="text" name="cause_of_death" id="cause_of_death"
+                placeholder="Isi Tanggal mati duluu.." class="w-full bg-gray-700 border border-gray-400 rounded px-4 py-2 text-white">
         </div>
 
         <div>
@@ -49,4 +50,21 @@
         <button type="submit" class="bg-red-600 hover:bg-red-700 px-6 py-2 rounded font-bold transtion">Submit</button>
     </form>
 </div>
+
+<script>
+    const diedAt = document.getElementById('died_at');
+    const causeOfDeath = document.getElementById('cause_of_death');
+
+    causeOfDeath.disabled = !diedAt.value;
+
+    diedAt.addEventListener('change', () => {
+        causeOfDeath.disabled = !diedAt.value;
+        if (!diedAt.value){ 
+            causeOfDeath.value = ''
+            causeOfDeath.placeholder = 'Isi tanggal mati dulu...';
+        } else {
+            causeOfDeath.placeholder = 'Kok bisa mati?';
+        }
+    });
+</script>
 @endsection

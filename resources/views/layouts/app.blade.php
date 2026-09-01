@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/jpeg" href="{{ asset('image/image_bar.jpeg') }}">
     <title>RIP MEME!</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -21,14 +22,21 @@
     </main>
 
     <script>
-        let seconds = 0;
-        setInterval(() => {
-            seconds++;
+        if (!sessionStorage.getItem('startTime')) {
+            sessionStorage.setItem('startTime', Date.now())
+        }
+
+        function Timer() {
+            const start = parseInt(sessionStorage.getItem('startTime'));
+            const seconds = Math.floor((Date.now() - start) / 1000)
             const h = String(Math.floor(seconds / 3600)).padStart(2, '0');
             const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
             const s = String(seconds % 60).padStart(2, '0');
             document.getElementById('timer').textContent = `${h}:${m}:${s}`;
-        }, 1000);
+        };
+
+        Timer();
+        setInterval(Timer, 1000);
     </script>
 </body>
 </html>
